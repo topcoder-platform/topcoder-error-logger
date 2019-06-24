@@ -1,0 +1,35 @@
+{
+  "name": "topcoder-error-logger",
+  "version": "1.0.0",
+  "description": "Topcoder Error Logger",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "mocha test/unit/*.test.js --require test/unit/prepare.js --exit",
+    "cov": "nyc --reporter=html --reporter=text mocha test/unit/*.test.js --require test/unit/prepare.js --exit",
+    "e2e": "mocha test/e2e/*.test.js --timeout 10000 --exit",
+    "e2e-cov": "nyc --reporter=html --reporter=text mocha test/e2e/*.test.js --timeout 10000 --exit"
+  },
+  "dependencies": {
+    "@hapi/joi": "^15.0.3",
+    "get-parameter-names": "^0.3.0",
+    "lodash": "^4.17.11",
+    "tc-bus-api-wrapper": "topcoder-platform/tc-bus-api-wrapper.git",
+    "util": "^0.12.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "mocha-prepare": "^0.1.0",
+    "nock": "^10.0.6",
+    "nyc": "^14.1.1",
+    "standard": "^12.0.1"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}
