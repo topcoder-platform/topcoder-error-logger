@@ -85,7 +85,7 @@ module.exports = (config) => {
    * @param {Object} obj the obj to be logged
    */
   logger.error = async (obj) => {
-    if (obj && obj.name && obj.message && obj.stack && config.POST_KAFKA_ERROR_ENABLED) {
+    if (obj && obj.message && obj.stack && config.POST_KAFKA_ERROR_ENABLED) {
       await postEvent({ error: _.pick(obj, ['name', 'message', 'stack']) })
     }
     if (typeof obj === 'string') {
@@ -104,7 +104,7 @@ module.exports = (config) => {
     if (!err) {
       return
     }
-    if (err.name && err.message && err.stack && config.POST_KAFKA_ERROR_ENABLED) {
+    if (err.message && err.stack && config.POST_KAFKA_ERROR_ENABLED) {
       await postEvent({ error: _.pick(err, ['name', 'message', 'stack']) })
     }
     if (signature) {
