@@ -8,7 +8,7 @@ const util = require('util')
 const getParams = require('get-parameter-names')
 const { createLogger, format, transports } = require('winston')
 const { LogLevels } = require('./constants')
-const busApi = require('tc-bus-api-wrapper')
+const busApi = require('topcoder-bus-api-wrapper')
 
 module.exports = (config) => {
   const logger = createLogger({
