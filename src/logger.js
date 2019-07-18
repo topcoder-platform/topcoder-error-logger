@@ -100,7 +100,17 @@ module.exports = config => {
   logger.error = async obj => {
     if (obj && obj.message && obj.stack && config.POST_KAFKA_ERROR_ENABLED) {
       await postEvent({
-        error: _.pick(obj, ['name', 'message', 'stack', 'metadata']),
+        error: _.pick(obj, [
+          'name',
+          'message',
+          'stack',
+          'topic',
+          'id',
+          'submissionPhaseId',
+          'resource',
+          'originalTopic',
+          'challengeId',
+        ]),
       });
     }
     if (typeof obj === 'string') {
