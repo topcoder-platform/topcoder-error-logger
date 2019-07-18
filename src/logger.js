@@ -99,6 +99,7 @@ module.exports = config => {
    */
   logger.error = async obj => {
     if (obj && obj.message && obj.stack && config.POST_KAFKA_ERROR_ENABLED) {
+      logger.debug(obj);
       await postEvent({
         error: _.pick(obj, [
           'name',
