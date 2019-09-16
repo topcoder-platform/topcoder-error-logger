@@ -15,9 +15,9 @@ module.exports = config => {
     level: config.LOG_LEVEL,
     transports: [
       new transports.Console({
-        format: format.combine(format.colorize(), format.simple()),
-      }),
-    ],
+        format: format.combine(format.colorize(), format.simple())
+      })
+    ]
   });
 
   let busApiClient;
@@ -31,7 +31,7 @@ module.exports = config => {
         'AUTH0_CLIENT_SECRET',
         'BUSAPI_URL',
         'KAFKA_ERROR_TOPIC',
-        'AUTH0_PROXY_SERVER_URL',
+        'AUTH0_PROXY_SERVER_URL'
       ])
     );
   }
@@ -47,7 +47,7 @@ module.exports = config => {
       originator: config.KAFKA_MESSAGE_ORIGINATOR,
       timestamp: new Date().toISOString(),
       'mime-type': 'application/json',
-      payload,
+      payload
     };
     await busApiClient.postEvent(message);
   }
@@ -110,8 +110,8 @@ module.exports = config => {
           'submissionPhaseId',
           'resource',
           'originalTopic',
-          'challengeId',
-        ]),
+          'challengeId'
+        ])
       });
     }
     if (typeof obj === 'string') {
@@ -130,12 +130,19 @@ module.exports = config => {
     if (!err) {
       return;
     }
-    if (err.message && err.stack && config.POST_KAFKA_ERROR_ENABLED) {
-      await postEvent({ error: _.pick(err, ['name', 'message', 'stack']) });
-    }
+
+    let errorMessage = 'Error';
     if (signature) {
+      errorMessage = `Error happened in ${signature}`;
       await logger.error(`Error happened in ${signature}`);
     }
+    if (err.message && err.stack && config.POST_KAFKA_ERROR_ENABLED) {
+      await postEvent({
+        error: _.pick(err, ['name', 'message', 'stack']),
+        message: errorMessage
+      });
+    }
+
     await logger.error(util.inspect(err));
     if (!err.logged) {
       await logger.error(err.stack);
