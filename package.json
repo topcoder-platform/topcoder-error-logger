@@ -1,5 +1,5 @@
 {
-  "name": "topcoder-error-logger",
+  "name": "@topcoder-platform/error-logger",
   "version": "1.0.0",
   "description": "Topcoder Error Logger",
   "main": "index.js",
