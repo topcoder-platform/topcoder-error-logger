@@ -28,6 +28,16 @@ jobs:
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          TEST_LOG_LEVEL: ${{secrets.TEST_LOG_LEVEL}}
+          TEST_AUTH0_URL: ${{secrets.TEST_AUTH0_URL}}
+          TEST_TOKEN_CACHE_TIME: ${{secrets.TEST_TOKEN_CACHE_TIME}}
+          TEST_AUTH0_CLIENT_ID: ${{secrets.TEST_AUTH0_CLIENT_ID}}
+          TEST_AUTH0_CLIENT_SECRET: ${{secrets.TEST_AUTH0_CLIENT_SECRET}}
+          TEST_AUTH0_AUDIENCE: ${{secrets.TEST_AUTH0_AUDIENCE}}
+          TEST_BUSAPI_URL: ${{secrets.TEST_BUSAPI_URL}}
+          TEST_KAFKA_ERROR_TOPIC: ${{secrets.TEST_KAFKA_ERROR_TOPIC}}
+          TEST_POST_KAFKA_ERROR_ENABLED: ${{secrets.TEST_POST_KAFKA_ERROR_ENABLED}}
+          TEST_KAFKA_MESSAGE_ORIGINATOR: ${{secrets.TEST_KAFKA_MESSAGE_ORIGINATOR}}
 
   publish-gpr:
     needs: build
