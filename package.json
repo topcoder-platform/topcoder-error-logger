@@ -1,5 +1,5 @@
 {
-  "name": "topcoder-error-logger",
+  "name": "@topcoder-platform/error-logger",
   "version": "1.0.0",
   "description": "Topcoder Error Logger",
   "main": "index.js",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@hapi/joi": "^15.0.3",
     "get-parameter-names": "^0.3.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "topcoder-bus-api-wrapper": "^1.0.1",
     "util": "^0.12.0",
     "winston": "^3.2.1"
